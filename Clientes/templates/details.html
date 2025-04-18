@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Details about {{ micliente.nombre }} {{ micliente.apellido }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>{{ micliente.nombre }} {{ micliente.apellido }}</h1>
+    
+    <p>email: {{ micliente.email }}</p>
+
+    <p>Back to <a href="/clienteslista">Clientes</a></p>
+  
+{% endblock %}

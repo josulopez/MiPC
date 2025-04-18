@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Mi PC tienda clientes
+{% endblock %}
+
+
+{% block content %}
+  <h1>Clientes</h1>
+  <p><a href="/">Inicio</a></p>
+  <ul>
+    {% for x in misclientes %}
+      <li><a href="details/{{ x.id }}">{{ x.nombre }} {{ x.apellido }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
