@@ -6,4 +6,3 @@ urlpatterns = [
     path('clienteslista/', views.clienteslista, name='Clientes'),
     path('clienteslista/details/<int:id>', views.details, name='details'),
     path('test/', views.testing, name="test")
-]
