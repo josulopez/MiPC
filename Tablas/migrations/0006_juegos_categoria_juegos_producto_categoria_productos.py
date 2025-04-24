@@ -7,20 +7,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Clientes', '0005_categoriajuego_categoriaproducto_juegos_licencias_and_more'),
+        ('Tablas', '0005_categoriajuego_categoriaproducto_juegos_licencias_and_more'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='juegos',
             name='categoria_juegos',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='Clientes.categoriajuego'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='Tablas.categoriajuego'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='producto',
             name='categoria_productos',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='Clientes.categoriaproducto'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='Tablas.categoriaproducto'),
             preserve_default=False,
         ),
     ]

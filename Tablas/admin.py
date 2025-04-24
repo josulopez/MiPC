@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from .models import Cliente , Producto, CategoriaProducto, CategoriaJuego, Juegos, Licencias
 # Register your models here.
