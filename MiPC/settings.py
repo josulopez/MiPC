@@ -121,3 +121,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#archivos media
+import os
+
+MEDIA_URL = '/media/' #envia las fotos a esta carpeta
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #extrae las fotos de la carpeta media y las usa en la pagina web ej: 141241:8000/media/foto.jpg
