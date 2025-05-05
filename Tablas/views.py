@@ -1,9 +1,9 @@
 from django.http import HttpResponse
 from django.template import loader
-from .models import Cliente
+from .models import Usuario
 # def nombre de la pagina
 def clienteslista(request):
-  misclientes = Cliente.objects.all().values()
+  misclientes = Usuario.objects.all().values()
   template = loader.get_template('clientes.html')
   context = {
     'misclientes': misclientes,
@@ -11,7 +11,7 @@ def clienteslista(request):
   return HttpResponse(template.render(context, request))
 
 def details(request, id):
-  micliente = Cliente.objects.get(id=id)
+  micliente = Usuario.objects.get(id=id)
   template = loader.get_template('details.html')
   context = {
     'micliente': micliente,
@@ -27,7 +27,7 @@ def Main(request):
   return HttpResponse(template.render())
 
 def testing(request):
-  clientes = Cliente.objects.all().values()
+  clientes = Usuario.objects.all().values()
   template = loader.get_template('template.html')
   context = {
     'clientes': clientes,   

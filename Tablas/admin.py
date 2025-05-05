@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import Cliente , Producto, CategoriaProducto, CategoriaJuego, Juegos, Licencias, Rol
+from .models import Usuario, Producto, Categoria, Carrito, Rol,Venta, DetalleVenta
 # Register your models here.
 class ClienteAdmin(admin.ModelAdmin):
   list_display=("nombre", "apellido", "celular", "email")
 
-admin.site.register(Cliente, ClienteAdmin)
+admin.site.register(Usuario, ClienteAdmin)
 admin.site.register(Producto)
-admin.site.register(CategoriaProducto)
-admin.site.register(CategoriaJuego)
-admin.site.register(Juegos)
-admin.site.register(Licencias)
+admin.site.register(Categoria)
+admin.site.register(Carrito)
+admin.site.register(Venta)
+admin.site.register(DetalleVenta)
 admin.site.register(Rol)
