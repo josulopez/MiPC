@@ -1,4 +1,7 @@
 from django.db import models
+
+from django.contrib.auth.models import User
+
 from django.utils import timezone
 # -----------------------
 # MODELOS BÁSICOS
@@ -20,20 +23,9 @@ class Rol(models.Model):
 # MODELO DE USUARIOS
 # -----------------------
 
-class Usuario(models.Model):
-    nombre = models.CharField(max_length=255)
-    apellido = models.CharField(max_length=255)
-    username = models.CharField(unique=True, max_length=20)
-    contrasena = models.CharField(max_length=25)
-    celular = models.PositiveBigIntegerField()
-    email = models.EmailField(max_length=255)
-    rol = models.ForeignKey(Rol, on_delete=models.CASCADE, default=1)
-    foto = models.ImageField(upload_to='fotos_perfil/', null=True, blank=True)
-    direccion = models.CharField(max_length=255)
-    codigopostal = models.PositiveIntegerField()
-
-    def __str__(self):
-        return f"{self.nombre} {self.apellido}"
+class PerfilUsuario(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    rol = models.ForeignKey(Rol, on_delete=models.CASCADE, default="1")
 
 # -----------------------
 # MODELOS DE PRODUCTOS
@@ -55,7 +47,7 @@ class Producto(models.Model):
 
 class Carrito(models.Model):
     fecha_creacion = models.DateTimeField(default=timezone.now)
-    cliente = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(User, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField(default=1)
 
@@ -71,12 +63,12 @@ class Carrito(models.Model):
 # -----------------------
 
 class Venta(models.Model):
-    cliente = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha = models.DateTimeField(default=timezone.now)
     total = models.PositiveIntegerField()
 
     def __str__(self):
-        return f"Compra #{self.id} - {self.cliente}"
+        return f"Compra #{self.id} - {self.user}"
 
 class DetalleVenta(models.Model):
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE, related_name='detalles')

@@ -1,11 +1,13 @@
 from django.contrib import admin
-from .models import Usuario, Producto, Categoria, Carrito, Rol,Venta, DetalleVenta
+from django.contrib.auth.models import User
+from .models import Producto, Categoria, Carrito, Rol,Venta, DetalleVenta, PerfilUsuario
 # Register your models here.
-class ClienteAdmin(admin.ModelAdmin):
-  list_display=("nombre", "apellido", "celular", "email")
 
-admin.site.register(Usuario, ClienteAdmin)
-admin.site.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+  list_display=("nombre_producto", "precio", "stock")
+
+admin.site.register(PerfilUsuario)
+admin.site.register(Producto, ProductoAdmin)
 admin.site.register(Categoria)
 admin.site.register(Carrito)
 admin.site.register(Venta)

@@ -1,25 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
-from .models import Usuario
 from .models import Producto
 # def nombre de la pagina
-  
-def clientes(request):
-  misclientes = Usuario.objects.all().values()
-  template = loader.get_template('clientes.html')
-  context = {
-    'misclientes': misclientes,
-  }
-  return HttpResponse(template.render(context, request))
-
-def details(request, id):
-  micliente = Usuario.objects.get(id=id)
-  template = loader.get_template('details.html')
-  context = {
-    'micliente': micliente,
-  }
-  return HttpResponse(template.render(context, request))
-
 def juegos(request):
   juegos = Producto.objects.filter(categoria__nombre__icontains='juegos')
   context = {
@@ -54,12 +36,4 @@ def Main(request):
       "licencias": licencias,
   }
   template = loader.get_template('main.html')
-  return HttpResponse(template.render(context, request))
-
-def testing(request):
-  clientes = Usuario.objects.all().values()
-  template = loader.get_template('template.html')
-  context = {
-    'clientes': clientes,   
-  }
   return HttpResponse(template.render(context, request))
