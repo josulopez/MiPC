@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Producto
 # def nombre de la pagina
+def info(request):
+  template = loader.get_template('info.html')
+  return HttpResponse(template.render({}, request))
+
 def juegos(request):
   juegos = Producto.objects.filter(categoria__nombre__icontains='juegos')
   context = {

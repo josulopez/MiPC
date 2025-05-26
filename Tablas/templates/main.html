@@ -3,44 +3,59 @@
   Mi PC Shop
 {% endblock %}
 {% block content %}
-<h1>Mi PC Tienda Online</h1>
- <h3>Videojuegos</h3>
-      <div>
-        {% for producto in videojuegos %}
-        <div>
-          <p>{{ producto.nombre_producto }} ${{ producto.precio }}</p>
-            <img src="{{producto.foto.url}}" width="100" height="100">
-            <input type="hidden" name="producto_id" value="{{ producto.id }}">
-            <button type="submit" >
-              Añadir al carrito
-            </button>
-        </div>
-        {% endfor %}
-      </div>
-      <h3>Componentes</h3>
-      <div>
-        {% for producto in componentes %}
-        <div>
-          <p>{{ producto.nombre_producto }} ${{ producto.precio }}</p>
-            <img src="{{producto.foto.url}}" width="100" height="100">
-            <input type="hidden" name="producto_id" value="{{ producto.id }}">
-            <button type="submit">
-              Añadir al carrito
-            </button>
-        </div>
-        {% endfor %}
-      </div>
-      <h3>Licencias</h3>
-      <div>
-        {% for producto in licencias %}
-        <div>
-          <p>{{ producto.nombre_producto }} ${{ producto.precio }}</p>
-            <img src="{{producto.foto.url}}" width="100" height="100">
-            <input type="hidden" name="producto_id" value="{{ producto.id }}">
-            <button type="submit">
-              Añadir al carrito
-            </button>
-        </div>
-        {% endfor %}
-      </div>
+  <div class="container">
+        <h1 class="display-3 text-center m-4">Mi PC Tienda Online</h1>
+        <div class="row justify-content-md-center mt-5">
+          <div class="col text-center mt-2">
+            <h3 class="display-5">Videojuegos</h3>
+              {% for producto in videojuegos %}
+              <div class="card mt-5 m-5">
+                <div class="card-header"><p>{{ producto.nombre_producto }} <b>${{ producto.precio }}</b></p></div>
+                <div class="card-body">
+                <div class="text-center"><img class="rounded" src="{{producto.foto.url}}" width="200" height="200"></div>
+                
+                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                <div class="mt-2">
+                  <button type="submit" >Añadir al carrito</button>
+                </div>
+                </div>
+              </div>
+              {% endfor %} 
+          </div>
+          <div class="col text-center mt-2">
+            <h3 class="display-5">Componentes</h3>
+              <div>
+              {% for producto in componentes %}
+              <div class="card mt-5 m-5">
+                <div class="card-header"><p>{{ producto.nombre_producto }} <b>${{ producto.precio }}</b></p></div>
+                <div class="card-body">
+                <div class="text-center"><img class="rounded" src="{{producto.foto.url}}" width="200" height="200"></div>
+                
+                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                <div class="mt-2">
+                  <button type="submit" >Añadir al carrito</button>
+                </div>
+                </div>
+              </div>
+              {% endfor %}
+              </div>
+          </div>
+          <div class="col text-center">
+            <h3 class="display-5">Licencias</h3>
+            {% for producto in licencias %}
+            <div class="card mt-5 m-5">
+              <div class="card-header"><p>{{ producto.nombre_producto }} <b>${{ producto.precio }}</b></p></div>
+                <div class="card-body">
+                <div class="text-center"><img class="rounded" src="{{producto.foto.url}}" width="200" height="200"></div>
+                
+                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                <div class="mt-2">
+                  <button type="submit" >Añadir al carrito</button>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+    </div>
+  </div>
 {% endblock %}
