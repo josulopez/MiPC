@@ -19,7 +19,14 @@
                         <h5 class="card-title text-center mt-3">{{ producto.nombre_producto }} ${{ producto.precio }}</h5>
                         <input type="hidden" name="producto_id" value="{{ producto.id }}">
                         <div class="text-center mt-5">
-                        <button type="submit">Añadir al carrito</button>
+                        {% if user.is_authenticated %}
+                            <form method="post" action="{% url 'agregar_al_carrito' producto.id %}">
+                            {% csrf_token %}
+                            <div class="mt-2">
+                                <button type="submit">Añadir al carrito</button>
+                            </div>
+                            </form>
+                        {% endif %}
                         </div>
                     </div>
                     </div>
