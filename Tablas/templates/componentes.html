@@ -3,25 +3,29 @@
 <html>
 <body>
 {% block content%}
-<h1 class="display-3 text-center m-4">Componentes</h1>
+<div class="container"style="margin-top: 100px;">
+<h1 class="display-3 text-center m-4"style="margin-top: 100px;">Componentes</h1>
+<div class="row justify-content-md-center ">
 {% for producto in componentes %}
-    <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-        <img src="{{producto.foto.url}}" class="img-fluid rounded-start" alt="...">
+    <div class="card mb-3 m-2" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="{{producto.foto.url}}" class="card-img rounded-start m-2" alt="..." width="200" height="200">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title text-center mt-3">{{ producto.nombre_producto }} <b>${{ producto.precio }}</b></h5>
+                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                <div class="text-center mt-5">
+                    <button type="submit">Añadir al carrito</button>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8">
-        <div class="card-body">
-            <h5 class="card-title">{{ producto.nombre_producto }} ${{ producto.precio }}</h5>
-            <input type="hidden" name="producto_id" value="{{ producto.id }}">
-            <button type="submit">
-              Añadir al carrito
-            </button>
         </div>
         </div>
-    </div>
-    </div>
 {%endfor%}
+</div>
+</div>
 {% endblock %}
 </body>
 </html>

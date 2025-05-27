@@ -1,0 +1,22 @@
+
+{% extends 'master.html' %} {% block content %}
+<div class="container"style="margin-top: 100px;">
+<article class="bg-gray-50 h-screen flex items-start justify-center mt-8">
+  <form method="post" class="bg-white p-8 rounded shadow-md w-full max-w-sm">
+    {% csrf_token %}
+    
+    <label class="form-label">
+      Inicia sesión para comenzar a comprar en <b>MiPC</b>
+    </label>
+    {{ form.as_p }}
+    <button
+      type="submit"
+      class="btn btn-success"
+      class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+    >
+      Iniciar sesión
+    </button>
+  </form>
+</article>
+</div>
+{% endblock %}

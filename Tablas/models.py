@@ -68,7 +68,7 @@ class Venta(models.Model):
     total = models.PositiveIntegerField()
 
     def __str__(self):
-        return f"Compra #{self.id} - {self.User}"
+        return f"Compra #{self.id} - {self.cliente}"
 
 class DetalleVenta(models.Model):
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE, related_name='detalles')
